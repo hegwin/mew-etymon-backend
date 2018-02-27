@@ -1,0 +1,21 @@
+= form_for @etymon do |f|
+  - if @etymon.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@etymon.errors.count, "error")} prohibited this etymon from being saved:"
+      ul
+        - @etymon.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :spelling
+    = f.text_field :spelling
+  .field
+    = f.label :meaning
+    = f.text_field :meaning
+  .field
+    = f.label :source
+    = f.text_field :source
+  .field
+    = f.label :evolution
+    = f.text_area :evolution
+  .actions = f.submit

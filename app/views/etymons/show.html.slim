@@ -1,0 +1,18 @@
+p#notice = notice
+
+p
+  strong Spelling:
+  = @etymon.spelling
+p
+  strong Meaning:
+  = @etymon.meaning
+p
+  strong Source:
+  = @etymon.source
+p
+  strong Evolution:
+  = @etymon.evolution
+
+=> link_to 'Edit', edit_etymon_path(@etymon)
+'|
+=< link_to 'Back', etymons_path

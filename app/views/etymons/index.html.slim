@@ -1,0 +1,27 @@
+h1 Listing etymons
+
+table
+  thead
+    tr
+      th Spelling
+      th Meaning
+      th Source
+      th Evolution
+      th
+      th
+      th
+
+  tbody
+    - @etymons.each do |etymon|
+      tr
+        td = etymon.spelling
+        td = etymon.meaning
+        td = etymon.source
+        td = etymon.evolution
+        td = link_to 'Show', etymon
+        td = link_to 'Edit', edit_etymon_path(etymon)
+        td = link_to 'Destroy', etymon, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Etymon', new_etymon_path

@@ -28,13 +28,14 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-gem 'slim'
+gem 'slim-rails'
 
 group :development, :test do
   gem 'pry'
   gem 'pry-rails'
   gem 'rspec-rails'
   gem 'factory_bot'
+  gem 'factory_bot_rails'
 end
 
 group :development do

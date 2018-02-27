@@ -1,0 +1,2 @@
+class EtymonsWord < ApplicationRecord
+end

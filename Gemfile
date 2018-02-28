@@ -30,12 +30,16 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 gem 'slim-rails'
 
+gem 'graphql'
+gem 'graphql-errors'
+
 group :development, :test do
   gem 'pry'
   gem 'pry-rails'
   gem 'rspec-rails'
   gem 'factory_bot'
   gem 'factory_bot_rails'
+  gem 'graphiql-rails'
 end
 
 group :development do

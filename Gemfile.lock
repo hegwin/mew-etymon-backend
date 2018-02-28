@@ -62,6 +62,11 @@ GEM
     ffi (1.9.21)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    graphiql-rails (1.4.9)
+      rails
+    graphql (1.7.12)
+    graphql-errors (0.1.0)
+      graphql (>= 1.6.0, < 2)
     i18n (0.9.3)
       concurrent-ruby (~> 1.0)
     jbuilder (2.7.0)
@@ -195,6 +200,9 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   factory_bot
   factory_bot_rails
+  graphiql-rails
+  graphql
+  graphql-errors
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)

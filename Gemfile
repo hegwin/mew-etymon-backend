@@ -33,6 +33,9 @@ gem 'slim-rails'
 gem 'graphql'
 gem 'graphql-errors'
 
+gem 'activeadmin'
+gem 'devise'
+
 group :development, :test do
   gem 'pry'
   gem 'pry-rails'

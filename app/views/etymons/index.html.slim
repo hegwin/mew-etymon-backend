@@ -1,4 +1,4 @@
-h1 Listing etymons
+h1 Mew Etymons
 
 table
   thead
@@ -6,10 +6,7 @@ table
       th Spelling
       th Meaning
       th Source
-      th Evolution
-      th
-      th
-      th
+
 
   tbody
     - @etymons.each do |etymon|
@@ -17,11 +14,3 @@ table
         td = etymon.spelling
         td = etymon.meaning
         td = etymon.source
-        td = etymon.evolution
-        td = link_to 'Show', etymon
-        td = link_to 'Edit', edit_etymon_path(etymon)
-        td = link_to 'Destroy', etymon, data: { confirm: 'Are you sure?' }, method: :delete
-
-br
-
-= link_to 'New Etymon', new_etymon_path

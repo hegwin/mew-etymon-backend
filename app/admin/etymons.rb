@@ -12,7 +12,11 @@ ActiveAdmin.register Etymon do
   index do
     selectable_column
     column :id
-    column :spelling
+    column 'Spelling' do |etymon|
+      strong do
+        etymon.spelling
+      end
+    end
     column :meaning
     column 'Words', :words_string
     actions
@@ -20,8 +24,11 @@ ActiveAdmin.register Etymon do
 
   show do
     attributes_table do
-      row :id
-      row :spelling
+      row :spelling do
+        strong do
+          etymon.spelling
+        end
+      end
       row :source
       row :meaning
       row :evolution

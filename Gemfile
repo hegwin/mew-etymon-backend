@@ -35,6 +35,7 @@ gem 'graphql-errors'
 
 gem 'activeadmin'
 gem 'devise'
+gem 'figaro'
 
 group :development, :test do
   gem 'pry'

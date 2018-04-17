@@ -5,4 +5,6 @@ Types::WordType = GraphQL::ObjectType.define do
   field :spelling, types.String
   field :meaning, types.String
   field :etymon_analysis, types.String
+
+  field :etymons, types[Types::EtymonType]
 end

@@ -66,7 +66,7 @@ ActiveAdmin.register Etymon do
     f.inputs 'Details' do
       f.input :spelling
       f.input :meaning
-      f.input :source, as: :select, collection: %w[ Latin Greek ]
+      f.input :source, as: :select, collection: %w[ Latin Greek Proto-Indo-European ]
       f.input :evolution, input_html: { rows: 6 }
     end
     f.inputs 'Words' do

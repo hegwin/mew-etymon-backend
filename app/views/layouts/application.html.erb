@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MewEtymon</title>
+    <title>喵呜词根</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
@@ -12,5 +12,10 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
+
+    <div class="footer">
+      <span>Weibo: <%= link_to '@hegwin', 'https://weibo.com/hegwin', target: '_blank' %></span>
+      <span>鄂ICP备13013177号-2</span>
+    </div>
   </body>
 </html>

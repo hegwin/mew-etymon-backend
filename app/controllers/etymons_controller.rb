@@ -4,7 +4,7 @@ class EtymonsController < ApplicationController
   # GET /etymons
   # GET /etymons.json
   def index
-    @etymons = Etymon.all
+    @etymons = Etymon.limit(30)
   end
 
   # GET /etymons/1

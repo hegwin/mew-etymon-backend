@@ -28,5 +28,7 @@ module MewEtymonBackend
       g.helper          false
       g.assets          false
     end
+
+    config.active_job.queue_adapter = :sidekiq
   end
 end

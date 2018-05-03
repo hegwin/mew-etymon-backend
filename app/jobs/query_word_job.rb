@@ -1,11 +1,8 @@
 class QueryWordJob < ApplicationJob
   queue_as :default
 
-  def perform(id, dict = IcibaService)
+  def perform(id)
     word = Word.find(id)
-    meaning = dict.query(word.spelling&.strip)
-    return if meaning.nil?
-
-    word.update_attributes meaning: meaning
+    word.query_meaning! if word
   end
 end

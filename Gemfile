@@ -42,6 +42,7 @@ group :development, :test do
   gem 'pry'
   gem 'pry-rails'
   gem 'rspec-rails'
+  gem 'rspec_junit_formatter'
   gem 'factory_bot'
   gem 'factory_bot_rails'
   gem 'graphiql-rails'

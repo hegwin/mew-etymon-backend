@@ -46,8 +46,6 @@ require 'capistrano/rails'
 require 'capistrano/rails/db'
 require 'capistrano/upload-config'
 require 'capistrano/faster_assets'
-require 'capistrano/sidekiq'
-require 'capistrano/sidekiq/monit'
 
 # Load custom tasks from `lib/capistrano/tasks` if you have any defined
 Dir.glob("lib/capistrano/tasks/*.rake").each { |r| import r }

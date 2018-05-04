@@ -65,7 +65,6 @@ group :development do
   gem 'capistrano-faster-assets'
   gem 'capistrano-upload-config'
   gem 'capistrano-faster-assets'
-  gem 'capistrano-sidekiq'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

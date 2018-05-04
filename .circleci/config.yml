@@ -7,12 +7,15 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-       - image: circleci/ruby:2.3.3-node-browsers
+      - image: circleci/ruby:2.3.3-node-browsers
+        environment:
+          RAILS_ENV: test
+          TEST_DATABASE_URL: postgresql://root@localhost/mew_etymon_test
       
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/postgres:9.4
+      - image: circleci/postgres:9.6-alpine-postgis-ram
 
     working_directory: ~/repo
 
@@ -27,7 +30,7 @@ jobs:
           - v1-dependencies-
 
       - run:
-          name: install dependencies
+          name: Install dependencies
           command: |
             bundle install --jobs=4 --retry=3 --path vendor/bundle
 
@@ -37,9 +40,12 @@ jobs:
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
         
       # Database setup
-      - run: cp config/database.example.yml config/database.yml
-      - run: bundle exec rake db:create
-      - run: bundle exec rake db:schema:load
+      - run:
+          name: Database Setup
+          command: |
+            cp config/database.example.yml config/database.yml
+            bundle exec rake db:create
+            bundle exec rake db:schema:load
 
       # run tests!
       - run:
@@ -52,6 +58,7 @@ jobs:
                             --format RspecJunitFormatter \
                             --out /tmp/test-results/rspec.xml \
                             --format progress \
+                            -- \
                             $TEST_FILES
 
       # collect reports

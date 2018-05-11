@@ -5,6 +5,13 @@
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
+
+    <%= favicon_link_tag 'favicons/favicon-144x144.png', rel: 'apple-touch-icon', type: 'image/png', size: '144x144' %>
+    <%= favicon_link_tag 'favicons/favicon-180x180.png', rel: 'apple-touch-icon', type: 'image/png', size: '180x180' %>
+    <%= favicon_link_tag 'favicons/favicon-32x32.png', rel: 'icon', type: 'image/png', size: '32x32' %>
+    <%= favicon_link_tag 'favicons/favicon-64x64.png', rel: 'icon', type: 'image/png', size: '64x64' %>
+    <%= favicon_link_tag 'favicons/favicon-16x16.png', rel: 'icon', type: 'image/png', size: '16x16' %>
+
     <%= javascript_include_tag 'application'  %>
   </head>
 

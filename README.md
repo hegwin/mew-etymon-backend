@@ -1,5 +1,8 @@
-# README
 # 喵呜词根
+
+[![CircleCI](https://circleci.com/gh/hegwin/mew-etymon-backend.svg?style=svg)](https://circleci.com/gh/hegwin/mew-etymon-backend)
+
+This is the back-end for WeChat mini-program "喵呜词根", which indicates English etymons and how they evolve.
 
 * Ruby version
 
@@ -26,3 +29,4 @@ PostgresQL ~> 9.4
 * Deployment instructions
 
 * ...
+

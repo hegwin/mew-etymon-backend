@@ -34,6 +34,7 @@ gem 'graphql'
 gem 'graphql-errors'
 
 gem 'activeadmin'
+gem 'awesome_nested_set'
 gem 'devise'
 gem 'figaro'
 gem 'sidekiq'
@@ -65,7 +66,6 @@ group :development do
   gem 'capistrano-bundler'
   gem 'capistrano-faster-assets'
   gem 'capistrano-upload-config'
-  gem 'capistrano-faster-assets'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

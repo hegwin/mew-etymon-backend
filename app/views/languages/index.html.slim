@@ -1,0 +1,57 @@
+= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/treant-js/1.0/Treant.css'
+
+h1 Languages
+
+#tree-simple
+
+= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js'
+= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/treant-js/1.0/Treant.js'
+
+javascript:
+  const basic_config = {
+    container: "#tree-simple",
+    connectors: {
+      type: 'step'
+    },
+    node: {
+      HTMLclass: 'nodeExample1'
+    }
+  };
+
+  let chart_config = [ basic_config ];
+
+  let query_string = `
+    query{
+      languages{
+        id
+        name
+        name_cn
+        period
+        parent_language_name
+      }
+    }
+  `;
+
+  fetch('/graphql', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({'query': query_string})
+  })
+  .then(response => response.json())
+  .catch(error => console.error('Error:', error))
+  .then(data => {
+    for(let language of data.data.languages) {
+      console.log(language.name)
+      let info = { text: { name: language.name, title: language.name_cn || 'N/A', desc: language.period || '' } };
+      let key = language.name.toLowerCase().replace(/\W/g, '_');
+      if(language.parent_language_name !== null) {
+        parent_key = language.parent_language_name.toLowerCase().replace(/\W/g, '_');
+        eval(`info.parent = ${parent_key}`);
+      }
+      eval(`var ${key} = info`);
+
+      chart_config.push(eval(`${key}`));
+    }
+
+    let my_chart = new Treant(chart_config);
+  })

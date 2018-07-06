@@ -32,4 +32,12 @@ Types::QueryType = GraphQL::ObjectType.define do
       Word.includes(:etymons).find(args[:id])
     }
   end
+
+  field :languages, types[Types::LanguageType] do
+    description 'All languages'
+
+    resolve ->(obj, args, ctx) {
+      Language.includes(:parent).order(:id)
+    }
+  end
 end

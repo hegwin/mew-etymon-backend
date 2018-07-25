@@ -2,19 +2,27 @@
 
 h1 Languages
 
-#tree-simple
+#language_tree
 
 = javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js'
 = javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/treant-js/1.0/Treant.js'
+= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/jquery.transit/0.9.12/jquery.transit.min.js'
 
 javascript:
   const basic_config = {
-    container: "#tree-simple",
+    container: "#language_tree",
     connectors: {
       type: 'step'
     },
     node: {
-      HTMLclass: 'nodeExample1'
+      HTMLclass: 'language-box',
+      collapsable: true
+    },
+    animation: {
+      nodeAnimation: 'easeOutBounce',
+      nodeSpeed: 400,
+      connectorsAnimation: 'bounce',
+      connectorsSpeed: 400
     }
   };
 
@@ -41,7 +49,6 @@ javascript:
   .catch(error => console.error('Error:', error))
   .then(data => {
     for(let language of data.data.languages) {
-      console.log(language.name)
       let info = { text: { name: language.name, title: language.name_cn || 'N/A', desc: language.period || '' } };
       let key = language.name.toLowerCase().replace(/\W/g, '_');
       if(language.parent_language_name !== null) {

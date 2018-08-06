@@ -8,7 +8,7 @@ Types::LanguageType = GraphQL::ObjectType.define do
   field :description, types.String
 
   field :parent_id, types.Int
-  field :parent, types[Types::LanguageType]
+  field :parent, Types::LanguageType
   field :parent_language_name, types.String do
     resolve -> (obj, args, ctx) {
       obj.parent&.name

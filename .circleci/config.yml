@@ -11,7 +11,7 @@ jobs:
         environment:
           RAILS_ENV: test
           TEST_DATABASE_URL: postgresql://postgres@localhost/mew_etymon_test
-      
+
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
@@ -38,7 +38,7 @@ jobs:
           paths:
             - ./vendor/bundle
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
-        
+
       # Database setup
       - run:
           name: Database Setup
@@ -47,18 +47,44 @@ jobs:
             bundle exec rake db:create
             bundle exec rake db:schema:load
 
+      # Test coverage reporter
+      # Pasted from https://docs.codeclimate.com/docs/circle-ci-test-coverage-example
+      - run:
+          name: Download cc-test-reporter
+          command: |
+            mkdir -p tmp/
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./tmp/cc-test-reporter
+            chmod +x ./tmp/cc-test-reporter
+
+      - persist_to_workspace:
+          root: tmp
+          paths:
+            - cc-test-reporter
+
       # run tests!
       - run:
           name: Run specs
           command: |
             mkdir /tmp/test-results
             TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)"
-            
+
             bundle exec rspec --format progress \
                             --format RspecJunitFormatter \
                             --out /tmp/test-results/rspec.xml \
                             --format progress \
                             $TEST_FILES
+            ./tmp/cc-test-reporter format-coverage -t simplecov -o tmp/codeclimate.backend.json coverage/backend/.resultset.json
+
+      - persist_to_workspace:
+          root: tmp
+          paths:
+            - codeclimate.backend.json
+
+      - run:
+          name: Upload coverage results to Code Climate
+          command: |
+            ./tmp/cc-test-reporter sum-coverage tmp/codeclimate.*.json -p 1 -o tmp/codeclimate.total.json
+            ./tmp/cc-test-reporter upload-coverage -i tmp/codeclimate.total.json
 
       # collect reports
       - store_test_results:

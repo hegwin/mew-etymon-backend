@@ -15,14 +15,16 @@ RSpec.describe 'Graphql::SearchEtymons', type: :request do
     context 'when it matches some' do
       let(:q_etymon) { 'i' }
       before do
-        FactoryBot.create :etymon, spelling: 'inter'
+        create :etymon, spelling: 'inter-'
+        create :etymon, spelling: 'kind-'
+        create :etymon, spelling: 'para-'
       end
 
       it 'returns 200 success' do
         post '/graphql', params: { query: query_string }
 
         expect(response).to have_http_status :ok
-        expect(JSON.parse(response.body).keys).not_to include('errors')
+        expect(data.keys).not_to include('errors')
       end
     end
   end

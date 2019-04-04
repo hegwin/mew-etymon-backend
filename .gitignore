@@ -22,3 +22,6 @@ config/database.yml
 /config/*.production.yml
 
 .gitconfig
+
+# Ignore test coverage
+/coverage

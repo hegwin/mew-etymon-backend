@@ -40,13 +40,14 @@ gem 'figaro'
 gem 'sidekiq'
 
 group :development, :test do
+  gem 'factory_bot'
+  gem 'factory_bot_rails'
+  gem 'graphiql-rails'
   gem 'pry'
   gem 'pry-rails'
   gem 'rspec-rails'
   gem 'rspec_junit_formatter'
-  gem 'factory_bot'
-  gem 'factory_bot_rails'
-  gem 'graphiql-rails'
+  gem 'simplecov', require: false
 end
 
 group :development do

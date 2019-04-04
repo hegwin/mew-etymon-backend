@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Graphql::SearchEtymons', type: :request do
+RSpec.describe 'Graphql::EtymonsSearch', type: :request do
   describe 'search_etymons' do
     let(:query_string) do
       %|{

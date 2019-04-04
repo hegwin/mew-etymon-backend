@@ -26,6 +26,20 @@ RSpec.describe 'Graphql::SearchEtymons', type: :request do
         expect(response).to have_http_status :ok
         expect(data.keys).not_to include('errors')
       end
+
+      it 'lists matched etymons' do
+        post '/graphql', params: { query: query_string }
+        expect(data['etymonsSearch'].map { |record| record['spelling'] }).to eq %w(inter- kind-)
+      end
+    end
+
+    context 'when it matches none' do
+      let(:q_etymon) { 'az' }
+
+      it 'returns an empty array' do
+        post '/graphql', params: { query: query_string }
+        expect(data['etymonsSearch'].count).to be_zero
+      end
     end
   end
 end

@@ -1,0 +1,39 @@
+#language_tree {
+  .language-box {
+    border: 1px solid #BBB;
+    border-radius: 4px;
+    padding: 1em;
+    height: 6em;
+    width: 10em;
+
+    .node-name {
+      font-weight: bold;
+      border-bottom: 1px solid #DDD;
+      margin-bottom: 0.8em;
+    }
+
+    .node-title {
+      font-size: 0.8em;
+    }
+
+    .node-desc {
+      font-size: 0.8em;
+      color: gray;
+    }
+    .collapse-switch {
+      top: 0;
+      right: 0;
+      box-sizing: border-box;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    &.collapsed {
+      .collapse-switch {
+        background: none;
+        border: 2px solid #BBB;
+      }
+    }
+  }
+}

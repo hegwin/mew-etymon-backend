@@ -1,4 +1,4 @@
-source 'https://gems.ruby-china.com'
+source ENV['CIRCLECI'] ? 'https://rubygems.org' : 'https://gems.ruby-china.com'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")

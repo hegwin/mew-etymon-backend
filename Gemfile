@@ -62,7 +62,6 @@ group :development do
   gem 'capistrano-rails', '~> 1.1'
   gem 'capistrano-rails-db'
   gem 'capistrano3-puma'
-  gem 'capistrano-nginx'
   gem 'capistrano-bundler'
   gem 'capistrano-faster-assets'
   gem 'capistrano-upload-config'

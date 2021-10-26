@@ -37,9 +37,7 @@ install_plugin Capistrano::SCM::Git
 require 'capistrano/puma'
 install_plugin Capistrano::Puma  # Default puma tasks
 install_plugin Capistrano::Puma::Workers  # if you want to control the workers (in cluster mode)
-install_plugin Capistrano::Puma::Nginx
 
-require 'capistrano/puma/nginx'
 require 'capistrano/rbenv'
 require 'capistrano/bundler'
 require 'capistrano/rails'

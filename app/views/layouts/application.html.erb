@@ -13,6 +13,16 @@
     <%= favicon_link_tag 'favicons/favicon-16x16.png', rel: 'icon', type: 'image/png', size: '16x16' %>
 
     <%= javascript_include_tag 'application'  %>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-36LDYNPFXH"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-36LDYNPFXH');
+    </script>
   </head>
 
   <body>
@@ -25,14 +35,4 @@
       <span><%= link_to '鄂ICP备13013177号-2', 'http://www.beian.miit.gov.cn', target: '_blank' %></span>
     </div>
   </body>
-
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-36LDYNPFXH"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-36LDYNPFXH');
-  </script>
 </html>

@@ -10,7 +10,7 @@ class Etymon < ApplicationRecord
   def words_string=(string)
     self.words.clear
     string.split(',').each do |spelling|
-      word = Word.find_or_create_by(spelling: spelling)
+      word = Word.find_or_create_by(spelling: spelling.strip)
       words << word
     end
   end

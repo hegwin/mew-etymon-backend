@@ -12,7 +12,15 @@ ActiveAdmin.register Word do
     column :id
     column :spelling
     column :meaning
-    column 'Etymons', :etymons_string
+    column 'Etymons' do |word|
+      ul do
+        word.etymons.each do |etymon|
+          li do
+            link_to etymon.spelling, admin_etymon_path(etymon)
+          end
+        end
+      end
+    end
     actions
   end
 

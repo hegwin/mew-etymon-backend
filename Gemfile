@@ -33,7 +33,7 @@ gem 'slim-rails'
 gem 'graphql'
 gem 'graphql-errors'
 
-gem 'activeadmin'
+gem 'activeadmin', '~> 2.0.0'
 gem 'awesome_nested_set'
 gem 'devise'
 gem 'figaro'

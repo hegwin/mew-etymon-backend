@@ -18,7 +18,15 @@ ActiveAdmin.register Etymon do
       end
     end
     column :meaning
-    column('Words') { |etymon| display_word_list(etymon.words) }
+    column :words do |etymon|
+      ul do
+        etymon.words.each do |word|
+          li do
+            link_to word.spelling, admin_word_path(word)
+          end
+        end
+      end
+    end
     actions
   end
 
@@ -31,13 +39,21 @@ ActiveAdmin.register Etymon do
       end
       row :source
       row :meaning
-      row :evolution
+      row :evolution do |etymon|
+        simple_format etymon.evolution
+      end
       row :created_at
       row :updated_at
     end
 
     panel 'Associated words' do
-      display_word_list(etymon.words)
+      ul do
+        etymon.words.each do |word|
+          li do
+            link_to word.spelling, admin_word_path(word)
+          end
+        end
+      end
     end
 
     active_admin_comments
@@ -67,15 +83,5 @@ ActiveAdmin.register Etymon do
       f.input :words_string
     end
     f.actions
-  end
-
-  def display_word_list(words)
-    ul do
-      words.each do |word|
-        li do
-          link_to word.spelling, admin_word_path(word)
-        end
-      end
-    end
   end
 end

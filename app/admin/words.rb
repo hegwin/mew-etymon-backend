@@ -24,6 +24,21 @@ ActiveAdmin.register Word do
     actions
   end
 
+  show do
+    attributes_table do
+      row :spelling
+      row :meaning
+      row :etymon_analysis do |word|
+        simple_format word.etymon_analysis
+      end
+
+      row :created_at
+      row :updated_at
+    end
+
+    active_admin_comments
+  end
+
   filter :spelling
   filter :meaning
   filter :created_at

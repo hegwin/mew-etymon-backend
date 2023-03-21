@@ -12,13 +12,13 @@ ActiveAdmin.register Etymon do
   index do
     selectable_column
     column :id
-    column 'Spelling' do |etymon|
+    column 'Spelling', sortable: 'etymons.spelling' do |etymon|
       strong do
         etymon.spelling
       end
     end
     column :meaning
-    column 'Words', :words_string
+    column('Words') { |etymon| display_word_list(etymon.words) }
     actions
   end
 
@@ -37,13 +37,7 @@ ActiveAdmin.register Etymon do
     end
 
     panel 'Associated words' do
-      ul do
-        etymon.words.each do |word|
-          li do
-            link_to word.spelling, admin_word_path(word)
-          end
-        end
-      end
+      display_word_list(etymon.words)
     end
 
     active_admin_comments
@@ -73,5 +67,15 @@ ActiveAdmin.register Etymon do
       f.input :words_string
     end
     f.actions
+  end
+
+  def display_word_list(words)
+    ul do
+      words.each do |word|
+        li do
+          link_to word.spelling, admin_word_path(word)
+        end
+      end
+    end
   end
 end

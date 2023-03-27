@@ -1,7 +1,7 @@
 class Word < ApplicationRecord
   has_and_belongs_to_many :etymons
 
-  after_save :query_word_meaning, unless: :meaning
+  after_save :query_word_meaning, if: -> { meaning.blank? }
 
   def etymons_string
     etymons.map(&:spelling).join(',')

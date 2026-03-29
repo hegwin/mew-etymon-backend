@@ -32,3 +32,11 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# Ignore Vim swap files, backup files, and undo files.
+*.swp
+*.swo
+*.undo
+
+# Ignore Mac folder customization
+*.DS_Store
